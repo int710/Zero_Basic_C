@@ -1,0 +1,18 @@
+Quản lí: Danh sách sinh viên {char[] họ và tên, int năm sinh, float điểm_tb}
+	 - Sách trong thư viện {char[] tên-sách, char[] tên-tác-giả, int năm-xuất-bản}
+
+Về thao tác với cấu trúc dữ liệu: 
+	- Truy xuất/truy vấn/ Xem thông tin
+	- Thêm
+	- Sửa
+	- Xóa
+	- Sắp xếp
+
+Hãy viết một chương trình để quản lí danh sách sinh viên như trên,và có các chức năng sau:
+1. Thêm một danh sách sinh viên
+2. Hiển thị danh sách sinh viên
+3. Thêm một sinh viên vào cuối
+4. Sửa một sinh viên theo tên
+5. Xóa một sinh viên theo tên
+6. Sắp xếp danh sách sinh viên
+0. Thoát chương trình

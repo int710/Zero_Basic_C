@@ -1,0 +1,58 @@
+TÓM TẮT: Dynamic Allocation - Cấp phát động Library (stdlib.h);
+1. Malloc: (void*) malloc(Kích_thước_phần_tử _cấp_phát);
+//VD: Cấp phát n phần tử kiểu INT, khi cấp phàn nó là HEAP nên cần một con trỏ trỏ tới vị trí cấp phát
+	int* pa = (int*) malloc(sizeof(int)*n); //ép kiểu int có phẩn tử đc cấp phát <=> int pa[5]
+2. Calloc: tương tự khác với malloc ở (n,sizeof(int));
+	int* pb = (int*)calloc(n,sizeof(int));    <=> int pb[n] = {0};
+
+dùng free(); giải phóng ô nhớ free(pa);
+3. Realloc: cấp phát lại ô nhớ
+	arr = (int*)realloc(arr,(sizeof(int)*(n+1));  // 2 đối số truyền vào đó là tên của mảng đang quản lí, kích thước cần cấp phát lại.
+
+
+
+
+Cấp phát động mảng trong C sử dụng hai hàm malloc và realloc.
+
+Hàm malloc dùng để cấp phát bộ nhớ cho một khối dữ liệu mới. Cú pháp của hàm malloc như sau:
+
+
+										void *malloc(size_t size);
+
+Trong đó size là số byte cần cấp phát. Hàm malloc sẽ trả về một con trỏ kiểu void trỏ tới đầu khối bộ nhớ mới được cấp phát. Kiểu void là kiểu con trỏ tổng quát có thể được ép kiểu thành kiểu con trỏ của một kiểu dữ liệu cụ thể.
+
+Ví dụ, để cấp phát một mảng gồm 10 phần tử kiểu int, ta có thể sử dụng như sau:
+
+										int *a = (int*) malloc(sizeof(int) * 10);
+
+Đoạn mã trên sẽ cấp phát một khối bộ nhớ có độ lớn bằng 10 phần tử kiểu int, và trả về một con trỏ kiểu void trỏ tới đầu khối bộ nhớ đó. Sau đó, ta sử dụng toán tử ép kiểu (int*) để ép kiểu con trỏ void* sang kiểu con trỏ int*.
+
+Hàm realloc dùng để thay đổi kích thước của một khối bộ nhớ đã được cấp phát trước đó. Cú pháp của hàm realloc như sau:
+
+void *realloc(void *ptr, size_t size);
+Trong đó ptr là con trỏ tới khối bộ nhớ đã được cấp phát trước đó, và size là kích thước mới cần cấp phát. Hàm realloc sẽ trả về một con trỏ kiểu void trỏ tới đầu khối bộ nhớ mới. Nếu việc cấp phát không thành công, hàm realloc sẽ trả về NULL.
+
+Ví dụ, để thay đổi kích thước mảng a thành một mảng có 20 phần tử, ta có thể sử dụng như sau:
+
+										a = (int*) realloc(a, sizeof(int) * 20);
+
+Nếu việc cấp phát không thành công, a sẽ giữ nguyên giá trị trỏ tới khối bộ nhớ cũ. Ta có thể kiểm tra giá trị trả về của hàm realloc để xác định việc cấp phát đã thành công hay không.
+
+Sau khi sử dụng xong, ta cần giải phóng khối bộ nhớ đã cấp phát bằng hàm free.
+
+
+calloc là gì
+calloc là một hàm trong thư viện tiêu chuẩn của C được sử dụng để cấp phát và khởi tạo bộ nhớ cho một khối dữ liệu mới.
+
+Cú pháp của hàm calloc như sau:
+
+										void *calloc(size_t count, size_t size);
+
+Trong đó count là số lượng phần tử cần cấp phát, và size là kích thước của mỗi phần tử. Hàm calloc sẽ cấp phát một khối bộ nhớ có kích thước là count * size byte, và khởi tạo tất cả các byte trong khối bộ nhớ này về giá trị 0. Hàm calloc trả về một con trỏ kiểu void trỏ tới đầu khối bộ nhớ mới được cấp phát. Kiểu void là kiểu con trỏ tổng quát có thể được ép kiểu thành kiểu con trỏ của một kiểu dữ liệu cụ thể.
+
+Ví dụ, để cấp phát một mảng gồm 10 phần tử kiểu int và khởi tạo các phần tử này về giá trị 0, ta có thể sử dụng như sau:
+
+										int *a = (int*) calloc(10, sizeof(int));
+Đoạn mã trên sẽ cấp phát một khối bộ nhớ có độ lớn bằng 10 phần tử kiểu int, và khởi tạo tất cả các phần tử này về giá trị 0, và trả về một con trỏ kiểu void trỏ tới đầu khối bộ nhớ đó. Sau đó, ta sử dụng toán tử ép kiểu (int*) để ép kiểu con trỏ void* sang kiểu con trỏ int*.
+
+Sau khi sử dụng xong, ta cần giải phóng khối bộ nhớ đã cấp phát bằng hàm free
